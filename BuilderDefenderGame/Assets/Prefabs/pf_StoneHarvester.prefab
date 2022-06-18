@@ -130,6 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc267784ba61d6448fce1fdb9fc4fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _resourceGeneratorData:
+    timerMax: 1
+    resourceType: {fileID: 11400000, guid: 12729760b1c50334288443ad95e5cc33, type: 2}
 --- !u!114 &-5559156938394045644
 MonoBehaviour:
   m_ObjectHideFlags: 0

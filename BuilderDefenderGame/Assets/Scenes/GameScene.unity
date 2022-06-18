@@ -173,9 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a33f7670eaaa946aecb4c9742473a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceTypeList: {fileID: 11400000, guid: a489b923ea25d7b43b90ee7f38336760, type: 2}
   resourceUITemplate: {fileID: 644398274}
   xOffsetDistance: -160
+  yOffsetDistance: -50
 --- !u!1 &213514382
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +206,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingTypeList: {fileID: 11400000, guid: 2f2759f856fa3ef43bd6db67ff4213b2, type: 2}
-  prefab: {fileID: 3716416087331089673, guid: 1365ca4c3ce83a0448558f9ba8f79b38, type: 3}
 --- !u!4 &213514384
 Transform:
   m_ObjectHideFlags: 0
@@ -586,6 +585,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 644398274}
+  - component: {fileID: 644398275}
   m_Layer: 5
   m_Name: ResourceTemplate
   m_TagString: Untagged
@@ -615,6 +615,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &644398275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644398273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4509365e4e0524db3427e79dc6a253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 1960022323}
+  text: {fileID: 642910120}
 --- !u!1 &779083362
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,7 +658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bb8908fa3dd15542bf4857bb2fbbf74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceTypeList: {fileID: 11400000, guid: a489b923ea25d7b43b90ee7f38336760, type: 2}
+  <resourceTypeList>k__BackingField: {fileID: 0}
 --- !u!4 &779083364
 Transform:
   m_ObjectHideFlags: 0
@@ -905,7 +919,7 @@ MonoBehaviour:
   moveSpeed: 50
   minimumZoomSize: 5
   maximumZoomSize: 50
-  zoomAmount: 2
+  zoomStep: 2
   zoomSpeed: 50
 --- !u!212 &1271223039
 SpriteRenderer:

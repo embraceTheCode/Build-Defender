@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BuilderDefender.Resources;
 
 namespace BuilderDefender.Buildings
 {
@@ -10,6 +9,5 @@ namespace BuilderDefender.Buildings
     {
         public string buildingName;
         public Transform prefab;
-        public ResourceGeneratorData resourceGeneratorData;
     }
 }

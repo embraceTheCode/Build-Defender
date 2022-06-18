@@ -1,20 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using BuilderDefender.Buildings;
+using BuilderDefender.Resources;
 
 namespace BuilderDefender.ResourceSystem
 {
     public class ResourceGenerator : MonoBehaviour
     {
-        private BuildingTypeSO _buildingType;
+        [SerializeField] private ResourceGeneratorData _resourceGeneratorData;
         private float _timer;
         private float _timerMax;
 
         private void Awake()
         {
-            _buildingType = GetComponent<BuildingTypeHolder>().buildingType;
-            _timerMax = _buildingType.resourceGeneratorData.timerMax;
+            _resourceGeneratorData = GetComponent<ResourceGeneratorData>();
+            _timerMax = _resourceGeneratorData.timerMax;
             _timer = _timerMax;
         }
 
@@ -24,7 +24,7 @@ namespace BuilderDefender.ResourceSystem
             if(_timer <= 0)
             {
                 _timer += _timerMax;
-                ResourceManager.Instance.AddResource(_buildingType.resourceGeneratorData.resourceType, 1);
+                ResourceManager.Instance.AddResource(_resourceGeneratorData.resourceType, 1);
             }   
         }
     }

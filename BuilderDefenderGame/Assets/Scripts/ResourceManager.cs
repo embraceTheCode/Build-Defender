@@ -12,7 +12,7 @@ namespace BuilderDefender.ResourceSystem
 
         public Action OnResourceAmountChange;
 
-        [SerializeField] private ResourceTypeListSO resourceTypeList;
+        [field: SerializeField] public ResourceTypeListSO resourceTypeList {get; private set;}
 
         private Dictionary<ResourceTypeSO, int> _resourceAmountDictionary = new Dictionary<ResourceTypeSO, int>();
 

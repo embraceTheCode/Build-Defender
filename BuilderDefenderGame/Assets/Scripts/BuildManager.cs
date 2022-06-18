@@ -7,9 +7,8 @@ namespace BuilderDefender.BuildSystem
 {
     public class BuildManager : MonoBehaviour
     {
-        //? Research about addressables to load the buildingTypeSO
+        //? Research about addressables to load the buildingTypeSO in order to have only 1 source of truth
         [SerializeField] BuildingTypeListSO buildingTypeList;
-        [SerializeField] Transform prefab; //! Only for testing, remove later
 
         private Camera _mainCamera;
 
@@ -22,7 +21,11 @@ namespace BuilderDefender.BuildSystem
         {
             if(Input.GetMouseButtonDown(0))
             {
-                Instantiate(prefab,GetMousePosition(),Quaternion.identity);
+                Instantiate(gameObject,GetMousePosition(),Quaternion.identity);
+            }
+            else if(Input.GetMouseButtonDown(1))
+            {
+                //TODO: Deselect building
             }
         }
 
