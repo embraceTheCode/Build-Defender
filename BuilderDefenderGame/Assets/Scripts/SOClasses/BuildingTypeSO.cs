@@ -9,5 +9,6 @@ namespace BuilderDefender.Buildings
     {
         public string buildingName;
         public Transform prefab;
+        public Sprite icon;
     }
 }

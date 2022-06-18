@@ -13,7 +13,6 @@ namespace BuilderDefender.ResourceSystem
 
         private void Awake()
         {
-            _resourceGeneratorData = GetComponent<ResourceGeneratorData>();
             _timerMax = _resourceGeneratorData.timerMax;
             _timer = _timerMax;
         }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: so_BuildingTypeList
   m_EditorClassIdentifier: 
   buildings:
-  - {fileID: 11400000, guid: 8f48abd5377b90d4ab9efdfc5ec9dade, type: 2}
-  - {fileID: 11400000, guid: 0644f7561e1c6fc45a60dfdf73421af3, type: 2}
   - {fileID: 11400000, guid: 1054aacd3999b3d4da4fd519125cd2f9, type: 2}
+  - {fileID: 11400000, guid: 0644f7561e1c6fc45a60dfdf73421af3, type: 2}
+  - {fileID: 11400000, guid: 8f48abd5377b90d4ab9efdfc5ec9dade, type: 2}

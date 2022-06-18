@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using BuilderDefender.Resources;
 using BuilderDefender.ResourceSystem;
 
-namespace BuilderDefender.UI
+namespace BuilderDefender.Resources
 {
     public class ResourcesUI : MonoBehaviour
     {
@@ -15,30 +14,25 @@ namespace BuilderDefender.UI
         [SerializeField]
         [Tooltip("The distance between each UI element, negative to move left or postive to move right")]
         private float xOffsetDistance;
+        
+        private Dictionary<ResourceTypeSO,ResourceUIDataHolder> _resourceTypeUIDataDictionary = new Dictionary<ResourceTypeSO, ResourceUIDataHolder>();
 
-        [SerializeField]
-        [Tooltip("The distance from the top for all UI elements, negative to move down or postive to move up")]
-        private float yOffsetDistance;
-
-        private Dictionary<ResourceTypeSO,ResourceUIDataHolder> _resourceTypeTransformDictionary = new Dictionary<ResourceTypeSO, ResourceUIDataHolder>();
-
-        private ResourceTypeListSO resourceTypeList;
+        private ResourceTypeListSO _resourceTypeList;
 
         private void Awake()
         {
-            RectTransform rectTransform = transform.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, yOffsetDistance);
+            resourceUITemplate.gameObject.SetActive(false);
         }
 
         private void Start()
         {
             ResourceManager.Instance.OnResourceAmountChange += ResourceManager_OnResourceAmountChange;
 
-            resourceTypeList = ResourceManager.Instance.resourceTypeList;
+            _resourceTypeList = ResourceManager.Instance.resourceTypeList;
 
-            for (int i = 0; i < resourceTypeList.resources.Length; i++)
+            for (int i = 0; i < _resourceTypeList.resources.Length; i++)
             {
-                ResourceTypeSO currentResource = resourceTypeList.resources[i];
+                ResourceTypeSO currentResource = _resourceTypeList.resources[i];
 
                 Transform newResourceUI = Instantiate(resourceUITemplate, transform);
                 newResourceUI.gameObject.SetActive(true);
@@ -47,7 +41,7 @@ namespace BuilderDefender.UI
 
                 ResourceUIDataHolder resourceUIData = newResourceUI.GetComponent<ResourceUIDataHolder>();
                 resourceUIData.image.sprite = currentResource.sprite;
-                _resourceTypeTransformDictionary[currentResource] = resourceUIData;
+                _resourceTypeUIDataDictionary[currentResource] = resourceUIData;
             }
 
             UpdateResourceAmount();
@@ -55,17 +49,14 @@ namespace BuilderDefender.UI
 
         private void OnDisable() => ResourceManager.Instance.OnResourceAmountChange -= ResourceManager_OnResourceAmountChange;
 
-        private void ResourceManager_OnResourceAmountChange()
-        {
-            UpdateResourceAmount();
-        }
-
+        private void ResourceManager_OnResourceAmountChange() => UpdateResourceAmount();
+        
         private void UpdateResourceAmount()
         {
-            foreach(ResourceTypeSO currentResource in resourceTypeList.resources)
+            foreach(ResourceTypeSO currentResource in _resourceTypeList.resources)
             {
                 int amount = ResourceManager.Instance.GetResourceAmount(currentResource);
-                ResourceUIDataHolder resourceUIData = _resourceTypeTransformDictionary[currentResource];
+                ResourceUIDataHolder resourceUIData = _resourceTypeUIDataDictionary[currentResource];
                 resourceUIData.text.SetText(amount.ToString());
             }
         }

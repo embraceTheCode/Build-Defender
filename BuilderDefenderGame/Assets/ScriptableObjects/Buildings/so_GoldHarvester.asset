@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: so_GoldHarvester
   m_EditorClassIdentifier: 
   buildingName: Gold Harvester
-  prefab: {fileID: 3716416087331089673, guid: 1365ca4c3ce83a0448558f9ba8f79b38, type: 3}
-  resourceGeneratorData:
-    timerMax: 1
-    resourceType: {fileID: 11400000, guid: 121b9b49fec4c5443be8f504d45779b0, type: 2}
+  prefab: {fileID: 6784861166157260966, guid: 08df4b29758c0024c8672640afb2d2b9, type: 3}
+  icon: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}
