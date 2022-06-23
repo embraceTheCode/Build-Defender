@@ -9,5 +9,9 @@ namespace BuilderDefender.Resources
     {
         public float timerMax;
         public ResourceTypeSO resourceType;
+        public float amountGainedPerNode;
+        public float nodeDetectionRadius;
+        public float maxTotalAmountGained;
+        
     }
 }
