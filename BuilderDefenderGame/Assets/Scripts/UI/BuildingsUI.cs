@@ -24,6 +24,8 @@ namespace BuilderDefender.Buildings
 
         private void Start()
         {
+            BuildManager.Instance.OnSelectedBuildingChanged += UpdateSelectedBuilding;
+
             _buildingTypeList = BuildManager.Instance.buildingTypeList;
 
             for (int i = 0; i < _buildingTypeList.buildings.Length; i++)
@@ -40,15 +42,13 @@ namespace BuilderDefender.Buildings
 
                 newBuildingUI.GetComponent<Button>().onClick.AddListener( () => 
                 {
-                    UpdateSelectedBuilding(buildingUIData);
                     BuildManager.Instance.SetSelectedBuilding(currentBuilding);
                 });
                 _buildingTypeUIDataDictionary[currentBuilding] = buildingUIData;
             }
         }
 
-        //! Missing the handle to unselect, consider using an event from the BuildingManager to detect when you should unselect
-        private void UpdateSelectedBuilding(BuildingUIDataHolder newSelectedBuildingData)
+        private void UpdateSelectedBuilding(BuildingTypeSO newSelectedBuilding)
         {
             BuildingTypeSO previousBuilding = BuildManager.Instance.GetSelectedBuilding();
             if(previousBuilding != null)
@@ -56,7 +56,11 @@ namespace BuilderDefender.Buildings
                 BuildingUIDataHolder previousBuildingData = _buildingTypeUIDataDictionary[previousBuilding];
                 previousBuildingData.selectedIndicator.gameObject.SetActive(false);
             }
-            if(newSelectedBuildingData != null) newSelectedBuildingData.selectedIndicator.gameObject.SetActive(true);
+            if(newSelectedBuilding != null) 
+            {
+                BuildingUIDataHolder currentBuildingData = _buildingTypeUIDataDictionary[newSelectedBuilding];
+                currentBuildingData.selectedIndicator.gameObject.SetActive(true);
+            }
         }
     }
 }

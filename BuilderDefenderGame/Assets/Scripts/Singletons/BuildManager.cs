@@ -33,14 +33,14 @@ namespace BuilderDefender.BuildSystem
             }
             else if(Input.GetMouseButtonDown(1))
             {
-                _selectedBuilding = null;
+                SetSelectedBuilding(null);                
             }
         }
 
         public void SetSelectedBuilding(BuildingTypeSO newBuilding)
         {
-            _selectedBuilding = newBuilding;
             OnSelectedBuildingChanged?.Invoke(newBuilding);
+            _selectedBuilding = newBuilding;
         }
 
         public BuildingTypeSO GetSelectedBuilding()
