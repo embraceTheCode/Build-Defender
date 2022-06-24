@@ -11,5 +11,6 @@ namespace BuilderDefender.Buildings
         public Transform prefab;
         public Sprite icon;
         public Sprite ghostImage;
+        public float minConstructionRadius;
     }
 }

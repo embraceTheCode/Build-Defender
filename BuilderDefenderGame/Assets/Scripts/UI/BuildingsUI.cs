@@ -14,6 +14,9 @@ namespace BuilderDefender.Buildings
         [Tooltip("The distance between each UI element, negative to move left or postive to move right")]
         private float xOffsetDistance;
 
+        [SerializeField]
+        private List<BuildingTypeSO> buildingIgnoreList;
+
         private Dictionary<BuildingTypeSO,BuildingUIDataHolder> _buildingTypeUIDataDictionary = new Dictionary<BuildingTypeSO, BuildingUIDataHolder>();
         private BuildingTypeListSO _buildingTypeList;
 
@@ -31,6 +34,7 @@ namespace BuilderDefender.Buildings
             for (int i = 0; i < _buildingTypeList.buildings.Length; i++)
             {
                 BuildingTypeSO currentBuilding = _buildingTypeList.buildings[i];
+                if(buildingIgnoreList.Contains(currentBuilding)) continue;
 
                 Transform newBuildingUI = Instantiate(buildingUITemplate,transform);
                 newBuildingUI.gameObject.SetActive(true);
